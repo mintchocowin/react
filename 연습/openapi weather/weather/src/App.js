@@ -1,14 +1,13 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import WeatherBox from "./component/WeatherBox";
-import WeatherButton from "./component/WeatherButton";
+import WeatherBox from "./components/WeatherBox";
+import WeatherButton from "./components/WeatherButton";
 import { useEffect, useState, CSSProperties } from "react";
 import ClipLoader from "react-spinners/ClipLoader";
-import ClipLoader from "react-spinners/ClipLoader";
 
-const API_KEY = process.env.API_KEY;
+const API_KEY = process.env.REACT_APP_API_KEY;
 
-function App() {
+function APP() {
   const [weather, setWeather] = useState(null);
   const [city, setCity] = useState("");
   const [loading, setLoading] = useState(false);
@@ -16,12 +15,12 @@ function App() {
   const getCurrentLocation = () => {
     navigator.geolocation.getCurrentPosition((position) => {
       const lat = position.coords.latitude;
-      const lon = position.coords.longitude;
-      getWeatherByCurrentLocation(lat, lon);
+      const long = position.coords.longitude;
+      getWeatherByCurrentLocation(lat, long);
     });
   };
-  const getWeatherByCurrentLocation = async (lat, lon) => {
-    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid={API key}`;
+  const getWeatherByCurrentLocation = async (lat, long) => {
+    const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${long}&appid=${API_KEY}&lang=kr&units=metric`;
     setLoading(true);
     const response = await fetch(url);
     const data = await response.json();
@@ -33,9 +32,11 @@ function App() {
     setLoading(true);
     const response = await fetch(url);
     const data = await response.json();
+    setLoading(false);
+    setWeather(data);
   };
   useEffect(() => {
-    if (city == "") {
+    if ((city = "")) {
       getCurrentLocation();
     } else {
       getWeatherByCity();
@@ -67,5 +68,3 @@ function App() {
     </div>
   );
 }
-
-export default App;
