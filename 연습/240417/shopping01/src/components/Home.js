@@ -1,0 +1,16 @@
+import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+const Home = () => {
+  const navigate = useNavigate();
+  const goProductPage = () => {
+    navigate("/product?q=pants");
+  };
+  return (
+    <div className="homepage">
+      <div>Home Page</div>
+      <Link to="/about">go to about page</Link>
+      <button onClick={goProductPage}>Go to product page</button>
+    </div>
+  );
+};

@@ -1,17 +1,17 @@
 import "./App.css";
-import { Routes, Route } from "reacti-router-dom";
-import ProductAll from "./components/ProductAll";
-import Login from "./components/Login";
-import ProductDetail from "./components/ProductDetail";
+import { useState } from "react";
+import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-
+import ProductAll from "./components/ProductAll";
+import ProductDetail from "./components/ProductDetail";
+import Login from "./components/Login";
+import { Routes, Route } from "react-router-dom";
 function App() {
-  const [autheneticate, setAuthenticate] = useState(false);
+  const [authenticate, setAuthenticate] = useState(false);
   return (
     <div className="App">
-      <Navbar />
+      <Navbar authenticate={authenticate} setAuthenticate={setAuthenticate} />
       <Routes>
-        <Route path="/" element={<ProductAll />} />
         <Route
           path="/login"
           element={<Login />}
@@ -19,7 +19,8 @@ function App() {
         />
         <Route
           path="/product/:id"
-          element={<ProductDetail authenticate={authenticate} />}
+          element={<ProductDetail />}
+          authenticate={authenticate}
         />
       </Routes>
     </div>
