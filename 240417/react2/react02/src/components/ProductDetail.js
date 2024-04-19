@@ -1,18 +1,18 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Container, Col, Row } from "react-bootstrap";
+import { Container, Col, Row, Dropdown, Button } from "react-bootstrap";
 
 const ProductDetail = () => {
   const [product, setProduct] = useState({});
   const [loading, setLoading] = useState(false);
   const { id } = useParams();
   const getProductDetail = async () => {
-    const url = `http://localhost:3004/products/${id}`;
+    const url = `https://my-json-server.typicode.com/mintchocowin/musinsa//products/${id}`;
     setLoading(true);
     const response = await fetch(url);
     const data = await response.json();
     setProduct(data);
-    setLoading(False);
+    setLoading(false);
   };
   useEffect(() => {
     getProductDetail();
@@ -29,7 +29,23 @@ const ProductDetail = () => {
           <Col>
             <div className="product-info">{product?.title}</div>
             <div className="product-info">{product?.price}</div>
-            <div classNAme="choice"></div>
+            <div classNAme="choice">
+              {product?.choice ? "Conscious Point" : ""}
+            </div>
+
+            <Dropdown className="drop-down">
+              <Dropdown.Toggle variant="outline-dark" id="dropdown-basic">
+                사이즈 선택
+              </Dropdown.Toggle>
+              <Dropdown.Menu>
+                <Dropdown.Item href="#/action-1">S</Dropdown.Item>
+                <Dropdown.Item href="#/action-2">M</Dropdown.Item>
+                <Dropdown.Item href="#/action-3">L</Dropdown.Item>
+              </Dropdown.Menu>
+            </Dropdown>
+            <Button variant="dark" className="add-button">
+              상품 구매하기
+            </Button>
           </Col>
         </Row>
       </Container>

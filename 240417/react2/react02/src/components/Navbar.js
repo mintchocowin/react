@@ -55,7 +55,7 @@ const Navbar = ({ authenticate, setAuthenticate }) => {
         <ul className="menu">
           {menuList.map((menu, idx) => (
             <li key={idx}>
-              <Link>{menu}</Link>
+              <Link to="#">{menu}</Link>
             </li>
           ))}
         </ul>
