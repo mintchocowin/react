@@ -8,10 +8,11 @@ const ContactForm = () => {
   const [phoneNumber, setPhoneNumber] = useState("");
 
   const getName = (e) => {
-    setName(e.target.value);
+    setName(e.target.valje);
   };
+
   const getNumber = (e) => {
-    setPhoneNumber(e.target.value);
+    setPhoneNumber(e.taget.value);
   };
 
   const addContact = (e) => {
