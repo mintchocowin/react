@@ -1,24 +1,14 @@
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import ContactList from "./component/ContactList";
-import ContactForm from "./component/ContactForm";
+import { useState, useEffect } from "react";
+import { Routes, Route } from "react-router-dom";
+import { useSelector } from "react-redux";
+import Navbar from "./component/Navbar";
+import ProductAll from "./components/ProductAll";
+import Login from "./componnets/Login";
+import PrivateRoute from "./components/PrivateRoute";
 
 function App() {
-  return (
-    <div className="App">
-      <h1 className="title"> 연락처 </h1>
-      <Container>
-        <Row>
-          <Col>
-            <ContactForm />
-          </Col>
-          <Col>
-            <ContactList />
-          </Col>
-        </Row>
-      </Container>
-    </div>
-  );
+  const [authenticate, setAuthenticate] = useState(false);
+  return <div></div>;
 }
-
-export default App;
