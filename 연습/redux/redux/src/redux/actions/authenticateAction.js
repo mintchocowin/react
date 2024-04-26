@@ -5,4 +5,3 @@ const login = (id, password) => {
 };
 
 export const authenticateAction = { login };
-
