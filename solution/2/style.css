@@ -1,0 +1,66 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+body {
+  background: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-size: 22px;
+  padding: 10px;
+}
+
+body::before {
+  content: "";
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: url("https://images.pexels.com/photos/412462/pexels-photo-412462.jpeg?cs=srgb&dl=atmosphere-blue-bright-412462.jpg&fm=jpg")
+    center/cover no-repeat;
+  z-index: 0;
+}
+
+body > * {
+  z-index: 1;
+  position: relative;
+}
+
+main {
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 900px;
+  height: 480px;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.button-wrapper {
+  display: flex;
+  margin-bottom: 40px;
+  justify-content: center;
+}
+
+.button {
+  display: block;
+  width: 300px;
+  background-color: rgba(0, 0, 0, 0.1);
+  color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.user_list {
+  width: 180px;
+  margin: 0 auto;
+  color: #fff;
+}
